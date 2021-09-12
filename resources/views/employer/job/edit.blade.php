@@ -1,0 +1,81 @@
+@extends('employer.layouts.app')
+@section('content')
+@include('employer.users.partials.header', [
+    'title' => __('Job Title : '. $job->title),
+    'description' => __('Edit THis Job'),
+    'class' => 'col-lg-12'
+])
+{{-- @include('employer.job.cv-modal') --}}
+<div class="container-fluid mt--9 ">
+    <div class="row">
+
+        <div class="col-xl-8 offset-xl-2 mb-7 ">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white ">
+                    <div class=" ">
+                        <h3 class=" text-center display-4 mb-0">Edit : {{ $job->title }}</h3>
+                    </div>
+                </div>
+                <div class="card-body pb-4">
+                <form method="post" action="{{ route('employer.job.update',['id'=>$job->id]) }}" autocomplete="off">
+                            @csrf
+                            @method('put')
+                        <div class="pl-lg-4">
+                            <div  class="text-center" >
+                            @if (session('status'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('status') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
+                            <h6 class="heading-small pt-2 text-muted mb-4">{{ __('Job Details') }}</h6>
+                            </div>
+                            <label class="form-control-label" for="input-name">{{ __('Title') }}</label>
+                            <input type="text" id="title" name="title" class="pl-4 form-control form-control-alternative" value="{{old('title',$job->title)}}">
+                            <label class="form-control-label pt-2" for="input-name">{{ __('Description') }}</label>
+                            <textarea class="pl-4 form-control form-control-alternative" id="description" name="description" value="{{old('description')}}">{{$job->description}}</textarea>
+                            <label class="pt-2 form-control-label" for="input-name">{{ __('Location') }}</label>
+                            <input class="form-control form-control-alternative" id="location" name="location" value="{{old('location',$job->location)}}">
+
+
+                            <label class="form-control-label" for="input-name">{{ __('Experience') }}</label>
+                            <input name="Experience" id="experience" class="pl-4 form-control form-control-alternative" value="{{old('Experience',$job->Experience)}}">
+                            <label class="form-control-label" for="input-name">{{ __('Position') }}</label>
+                            <input class="pl-4 form-control form-control-alternative" id="position" name="position" value="{{old('position',$job->position)}}">
+                            <div class=" pt-4">
+                            <label class="form-control-label" for="input-name">{{ __('Shift') }}</label>
+                            <input class="pl-4 form-control form-control-alternative" id="shift" name="shift" value="{{old('shift',$job->shift)}}">
+                            <div class="text-center pt-4">
+                            <button   id="submit" class="btn btn-success text-center" type="submit" >Update Job</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="col-xl-4">
+                    <div class="card text-center bg-secondary shadow">
+
+                            <div class="card-header bg-white ">
+                                    <h3>{{ $job->name }}</h3>
+
+                            </div>
+                            <div  class=" p-4 text-center" >
+                                <a href="#">
+
+                                    <img style="height:200px" src="{{ asset($job->profile_picture) }}" class="rounded-circle">
+                                </a>
+
+
+                        </div>job Profile Picture
+                            <div class="text-center p-4">
+                            <button name="submit"  id="submit" class="btn btn-success text-center" type="submit" >Update</button></div>
+                        </div>
+
+
+        </div> --}}
+    </div>
+@include('layouts.footers.nav')
+@endsection

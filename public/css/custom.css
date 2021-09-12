@@ -1,0 +1,36 @@
+#signup-image img
+{
+    /* background-image: url('/images/register.jpg'); */
+    /* /* max-height: 100%; */
+    /* max-width:100%; */
+    height: 100vh;
+    /* display: cover; */
+    width: 100%;
+    /* background-size: cover; */
+    object-fit: cover;
+    opacity: 0.4;
+    /* background-size:auto; */
+    /* background-repeat: cover; */
+}
+body
+{
+    overflow: hidden;
+}
+.register-inputs
+{
+    height:25px;
+}
+.form-group
+{
+    margin-bottom: 5px;
+
+}
+.select-height
+{
+    height: 30px ;
+}
+.form-group select
+{
+    font-size:12px;
+}
+
