@@ -13,13 +13,13 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Job Status</h3>
+                                <h3 class="mb-0">Submitted Job Applications</h3>
                             </div>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
+                        <table class="table align-items-center">
                             <thead class="thead-light">
                                 <tr>
 
@@ -35,7 +35,8 @@
                             </thead>
                             <tbody>
                                 <?php $i=1;?>
-                                @foreach ($pendingApplications as $job)
+                                @foreach ($applications['submitted'] as $job)
+
                                 <tr>
                                     <td scope="row">
                                         {{$i}}
@@ -73,6 +74,203 @@
                         </table>
                     </div>
                 </div>
+                <div class="mt-3 card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Jobs Where You Have Been Shortlisted</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <table class="table align-items-center">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Sr. No</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    {{-- <th scope="col">Experience</th>
+                                    <th scope="col">Skills</th> --}}
+                                    <th scope="col">Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=1;?>
+                                @foreach ($applications['shortlisted'] as $job)
+
+                                <tr>
+                                    <td scope="row">
+                                        {{$i}}
+                                        <?php $i++;?>
+                                    </td>
+                                    <td>
+                                        {{$job->designation_category}}
+                                    </td>
+                                    <td>
+                                        {{$job->title}}
+                                    </td>
+                                    <td>
+                                        {{Str::limit($job->description,20)}}
+                                    </td>
+                                    {{-- <td>
+                                        {{($job->Experience)}} years
+                                    </td> --}}
+                                    {{-- <td>
+                                        {{($job->required_skills)}}
+                                    </td> --}}
+
+                                    <td>
+                                        <b>{{$job->status}}</b>
+                                        {{-- <a href={{route('candidate.company.job.view',['id'=>$job->id])}}>View Job</a><span class="ml-4 text-white"
+                                        style="color:white;background-color:#47d239;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('candidate.company.job.edit',['id'=>$job->id])}}>Edit Job</a></span>
+                                        <span class="ml-4 text-white"
+                                        style="color:white;background-color:#f73121;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('candidate.company.job.view',['id'=>$job->id])}}>Delete Job</a></span> --}}
+                                    </td>
+
+
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-3 card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Rejected Job Applications</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <table class="table align-items-center">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Sr. No</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    {{-- <th scope="col">Experience</th>
+                                    <th scope="col">Skills</th> --}}
+                                    <th scope="col">Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=1;?>
+                                @foreach ($applications['rejected'] as $job)
+
+                                <tr>
+                                    <td scope="row">
+                                        {{$i}}
+                                        <?php $i++;?>
+                                    </td>
+                                    <td>
+                                        {{$job->designation_category}}
+                                    </td>
+                                    <td>
+                                        {{$job->title}}
+                                    </td>
+                                    <td>
+                                        {{Str::limit($job->description,20)}}
+                                    </td>
+                                    {{-- <td>
+                                        {{($job->Experience)}} years
+                                    </td> --}}
+                                    {{-- <td>
+                                        {{($job->required_skills)}}
+                                    </td> --}}
+
+                                    <td>
+                                        <b>{{$job->status}}</b>
+                                        {{-- <a href={{route('candidate.company.job.view',['id'=>$job->id])}}>View Job</a><span class="ml-4 text-white"
+                                        style="color:white;background-color:#47d239;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('candidate.company.job.edit',['id'=>$job->id])}}>Edit Job</a></span>
+                                        <span class="ml-4 text-white"
+                                        style="color:white;background-color:#f73121;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('candidate.company.job.view',['id'=>$job->id])}}>Delete Job</a></span> --}}
+                                    </td>
+
+
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @if(isset($applications['reviewed']) && !$applications['reviewed']->isEmpty())
+                <div class="mt-3 card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Reviewed Job Applications</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <!-- Projects table -->
+                        <table class="table align-items-center">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th scope="col">Sr. No</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    {{-- <th scope="col">Experience</th>
+                                    <th scope="col">Skills</th> --}}
+                                    <th scope="col">Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=1;?>
+                                @foreach ($applications['reviewed'] as $job)
+
+                                <tr>
+                                    <td scope="row">
+                                        {{$i}}
+                                        <?php $i++;?>
+                                    </td>
+                                    <td>
+                                        {{$job->designation_category}}
+                                    </td>
+                                    <td>
+                                        {{$job->title}}
+                                    </td>
+                                    <td>
+                                        {{Str::limit($job->description,20)}}
+                                    </td>
+                                    {{-- <td>
+                                        {{($job->Experience)}} years
+                                    </td> --}}
+                                    {{-- <td>
+                                        {{($job->required_skills)}}
+                                    </td> --}}
+
+                                    <td>
+                                        <b>{{$job->status}}</b>
+                                        {{-- <a href={{route('candidate.company.job.view',['id'=>$job->id])}}>View Job</a><span class="ml-4 text-white"
+                                        style="color:white;background-color:#47d239;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('candidate.company.job.edit',['id'=>$job->id])}}>Edit Job</a></span>
+                                        <span class="ml-4 text-white"
+                                        style="color:white;background-color:#f73121;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('candidate.company.job.view',['id'=>$job->id])}}>Delete Job</a></span> --}}
+                                    </td>
+
+
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @endif
             </div>
 
         </div>

@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <img class="rounded-circle" height="200" src='{{asset(Auth::user()->profile_picture)}}'>
+                <img class="rounded-circle" height="200" src='{{asset('images/dummy.jpg')}}'>
         </div>
 
         </div>

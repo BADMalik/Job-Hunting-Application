@@ -4,7 +4,21 @@
     @include('candidate.layouts.headers.cards')
 
     <div class="container-fluid mt--7">
-
+        @if (session('job_success_status'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('job_success_status') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @elseif(session('job_already_submitted_status'))
+            <div class="alert alert-danger alert-dismissible fade in show" role="alert">
+                {{session('job_already_submitted_status')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row mt-5 pb-4">
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
@@ -50,7 +64,8 @@
                                         {{$activeJob->location}}
                                     </td>
                                     <td>
-                                        {{$activeJob->company}}
+                                        {{-- {{dd($activeJob->company_id)}} --}}
+                                        {{($activeJob->company_id) ? $activeJob->company : 'No company available'}}
                                     </td>
                                     <td>
                                         <a href="{{route('candidate.job.application',['id'=>$activeJob->id])}}">View Job</a>

@@ -27,12 +27,7 @@
 
                     <div class="card-body  pt-md-2">
                             <div class="text-center pb-2">
-                            <form id="ppForm" method="post" enctype="multipart/form-data">
-@csrf
-@method('put')
-                                <a name="profile_picture_update" id="profile-picture-update" class="btn btn-primary text-white" type="button">Update Picture</a>
-                                <input id='profile_picture_hidden' name="profile_picture_hidden" type='file' hidden/>
-                            </form>
+
                             </div>
                             <div class="text-center">
                             <h3>

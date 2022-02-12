@@ -4,15 +4,22 @@
     <div class="container-fluid">
 
         <div class="header-body">
+
             <!-- Card stats -->
             <div class="row">
+                @if(isset($activeJobs))
                 <div class="col-xl-4 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Total Posted Jobs</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{$activeJobs->count()}}</span>
+
+
+                                        <span class="h2 font-weight-bold mb-0">
+                                            {{$activeJobs->count()}}</span>
+
+
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -24,13 +31,19 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if(isset($uniqueCompanies))
                 <div class="col-xl-4 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Your are Representing </h5>
-                                    <span class="h2 font-weight-bold mb-0">{{$uniqueCompanies}} Company(s)</span>
+                                    <span class="h2 font-weight-bold mb-0">
+
+                                            {{$uniqueCompanies}} Company(s)
+
+                                    </span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -42,25 +55,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Total Appicants</h5>
-                                    <span class="h2 font-weight-bold mb-0">{{$totalApplicationsCount}}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                        <i class="fas fa-users"></i>
+                @endif
+                @if(isset($totalApplicationsCount))
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Total Appicants</h5>
+
+
+                                            <span class="h2 font-weight-bold mb-0">
+                                            {{$totalApplicationsCount}}</span>
+
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                            <i class="fas fa-users"></i>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                @endif
             </div>
         </div>
     </div>

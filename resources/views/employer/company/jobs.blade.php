@@ -64,7 +64,7 @@
                                         <a href={{route('employer.company.job.view',['id'=>$job->id])}}>View Job</a><span class="ml-4 text-white"
                                         style="color:white;background-color:#47d239;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('employer.company.job.edit',['id'=>$job->id])}}>Edit Job</a></span>
                                         <span class="ml-4 text-white"
-                                        style="color:white;background-color:#f73121;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('employer.company.job.view',['id'=>$job->id])}}>Delete Job</a></span>
+                                        style="color:white;background-color:#f73121;padding:8px 12px;border-radius:5%"> <a style="color:white" href={{route('employer.deletejob',['id'=>$job->id])}}>Delete Job</a></span>
                                     </td>
 
 

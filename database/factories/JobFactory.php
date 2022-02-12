@@ -53,6 +53,9 @@ class JobFactory extends Factory
         $locations=['PK','US','UK'];
         $locationsIndex=array_rand($locations);
         $finalLocation=$locations[$locationsIndex];
+        $experience = [1,2,3,4,5];
+        $experienceIndex = array_rand($experience);
+        $finalExperience = $experience[$experienceIndex];
         $shifts=['morning','evening'];
         $shiftsIndex=array_rand($shifts);
         $finalShift=$shifts[$shiftsIndex];
@@ -61,12 +64,14 @@ class JobFactory extends Factory
 
         return [
             'title'=>$jobSelected,
-            'description'=>$this->faker->paragraph.$this->faker->paragraph,
+            'description'=>$this->faker->paragraph,
             'position'=>$positionSelected,
             'required_skills'=>$listOfSkills,
             'location'=>$finalLocation,
             'shift'=>$finalShift,
-
+            'Experience'=>$finalExperience,
+            'employer_id'=>$user_id,
+            'designation_category'=>$positionSelected
         ];
     }
 }

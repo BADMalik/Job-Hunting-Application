@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\PasswordRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\PasswordRequest;
 
 
 class ProfileController extends Controller
@@ -28,7 +30,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-
+        // dd(Auth::user());
         if (auth()->user()->id == 1) {
             return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
         }
@@ -39,7 +41,9 @@ class ProfileController extends Controller
         }
             $skillsarray=rtrim($skillsarray,',');
         $request->merge(['skills'=>$skillsarray]);
-        auth()->user()->update($request->all());
+
+        User::find(Auth::user()->id)->update($request->all());
+
         return back()->withStatus(__('Profile successfully updated.'));
     }
 

@@ -16,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //bulk data edit or submit or update
     protected $fillable = [
         'name',
         'email',
@@ -33,6 +34,8 @@ class User extends Authenticatable
         'designation',
         'role_name',
         'skills',
+        'description',
+        'university',
         'profile_picture'
     ];
 

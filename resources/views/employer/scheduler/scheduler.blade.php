@@ -17,7 +17,7 @@
    </style>
 </head>
 <body>
-
+    <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
@@ -36,7 +36,7 @@
     </div>
 </nav>
 
-
+{{-- {{dd(Auth::user())}} --}}
 <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
    <div class="dhx_cal_navline">
        <div class="dhx_cal_prev_button">&nbsp;</div>
@@ -52,12 +52,21 @@
 </div>
 <script type="text/javascript">
 
+var user = {{ Auth::user()->id}}
 
-    scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
+scheduler.config.date_format = "%Y-%m-%d %H:%i:%s";
 scheduler.setLoadMode("day");
-scheduler.init("scheduler_here", new Date(2021, 7, 4), "week");
+scheduler.attachEvent("onEventCreated", function(id,e){
+    var event = scheduler.getEvent(id);
+    event.userId = user;
+    return true;
+});
 
-scheduler.load("/api/events", "json"); var dp = new dataProcessor("/api/events"); dp.init(scheduler);
+scheduler.init("scheduler_here", new Date(), "week");
+
+scheduler.load(`/api/events?user_id=${user}`, "json");
+var dp = new dataProcessor("/api/events");
+dp.init(scheduler);
 dp.setTransactionMode("REST");
 </script>
 </body>

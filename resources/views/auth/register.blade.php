@@ -122,6 +122,7 @@
                                     </div>
                                     <select class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" placeholder="{{ __('Select Your Country') }}" id="country" name="country" value="{{old('country')}}" required>
                                         @include('extras.country-input')
+                                    </select>
                                 </div>
                                 @if ($errors->has('country'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">

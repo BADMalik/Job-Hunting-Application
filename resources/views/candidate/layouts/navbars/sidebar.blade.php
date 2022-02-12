@@ -28,11 +28,11 @@
                          {{ __('View Applications Statuses') }}
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="{{ route('employer.company.create') }}">
-                         {{ __('Create Company') }}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('getShortlistedJobs') }}">
+                         {{ __('View Shortlisted Jobss') }}
                     </a>
-                </li> --}}
+                </li>
             </ul>
         </div>
     </div>

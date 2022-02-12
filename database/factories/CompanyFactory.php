@@ -28,9 +28,9 @@ class CompanyFactory extends Factory
         [
             'name'=>$this->faker->jobTitle,
             'description'=>$this->faker->realText(),
-            'country'=>$this->faker->country,
+            // 'country'=>$this->faker->country,
             'type'=>$finalCompanyType,
-            'address'=>$this->faker->address,
+            'location'=>$this->faker->address,
             'employees_count'=>rand(0,1000)
             //
         ];

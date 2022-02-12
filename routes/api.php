@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-// Route::get('/data', 'EventController@index');
+// Route::get('/data', 'EventController@index');l
 Route::resource('events', 'App\Http\Controllers\Employer\EventController');
+Route::post('/employer/getApplicants','App\Http\Controllers\Employer\JobController@getApplicants');

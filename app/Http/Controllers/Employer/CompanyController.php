@@ -41,9 +41,15 @@ class CompanyController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request);
         // dd($request->except('_token','_method'));
-        // $status= Company::create($request->except('_token','_method'));
+        $status = Company::create($request->except('_token','_method'));
         return redirect()->route('employer.companies')->withStatus(__('Company Created Successfully.'));
 
+    }
+    public function delete(Request $request,$id)
+    {
+        // dd($id);
+        dd(Company::find($id));
     }
 }

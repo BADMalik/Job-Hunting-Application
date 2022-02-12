@@ -5,7 +5,7 @@
     'description' => __('View Job Details'),
     'class' => 'col-lg-12'
 ])
-@include('candidate.job.cv-modal')
+@include('candidate.job.cv-modal',['id'=>$job->id])
 <div class="container-fluid mt--9 ">
     <div class="row">
 
@@ -20,11 +20,6 @@
 
                         <div class="pl-lg-4">
                             <div  class="text-center" >
-                                {{-- <a href="#">
-
-                                    <img style="height:200px" src="{{ asset($job->profile_picture) }}" class="rounded-circle">
-                                </a> --}}
-
                             <h6 class="heading-small pt-2 text-muted mb-4">{{ __('Job Details') }}</h6>
                             </div>
                             <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
@@ -37,12 +32,12 @@
                             <h4 class="pl-4"><b>{{ucwords($job->position)}}</b></h4><hr>
                             <label class="form-control-label" for="input-name">{{ __('Experience Required') }}</label>
                             <h4 class="pl-4"><b>{{$job->Experience}} Years</b></h4>
-
-
+                            <label class="form-control-label" for="input-name">{{ __('Skills Required') }}</label>
+                            <h4 class="pl-4"><b>{{$job->required_skills}}</b></h4>
                         </div>
                         <div class="text-center">
 
-                            <button id="cv-modal" type="button" class="btn btn-success" href="#">Apply</button>
+                            <button id="cv-modal" type="button" class="btn btn-success" href="#">Upload CV</button>
                         </div>
                 </div>
             </div>
@@ -50,7 +45,6 @@
         <div class="col-xl-4">
             <div class="">
                     <div class=" text-center bg-secondary shadow">
-                        {{-- <div class="pl-lg-4"> --}}
                             <div class="card-header bg-white">
                                 <div class=" text-center">
                                     <h3 class="text-center mb-0">{{ $job->title }}</h3>

@@ -48,6 +48,17 @@
                         </a>
                     </li>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('allevents') }}">
+                        {{ __('View Interviews') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('getShortlistedEvents') }}">
+                        {{ __('View Shortlisted Interviews') }}
+                    </a>
+                </li>
+            </li>
 
             </ul>
         </div>

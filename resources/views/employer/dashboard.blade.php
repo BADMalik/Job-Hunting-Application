@@ -29,6 +29,7 @@
                                     <th scope="col">Location</th>
                                     <th scope="col">Company </th>
                                     <th scope="col">Applications </th>
+                                    <th span="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,6 +55,9 @@
                                     </td>
                                     <td>
                                         <a href="{{route('employer.job.applications',['id'=>$activeJob->id])}}">View Applications</a>
+                                    </td>
+                                    <td>
+                                        <a style="color:white;background-color:red;padding:7px 5px;border-radius:10%" href="{{route('employer.deletejob',['id'=>$activeJob->id])}}">Delete Job</a>
                                     </td>
                                 </tr>
                                 @endforeach

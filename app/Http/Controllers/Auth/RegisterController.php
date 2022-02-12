@@ -49,13 +49,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
-//        dd($data);
-//        dd($data['skills']);
-//        array_map({
-//
-//        },$data['skills']);
-//         dd(ltrim(json_encode($data['skills']),'['));
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:10','min:3'],
             'last_name' => ['required', 'string', 'max:10','min:3'],

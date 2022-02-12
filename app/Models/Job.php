@@ -50,24 +50,26 @@ class Job extends Model
     {
 
             $job = DB::table('jobs')->where('id',$id)->get()[0];
-            // $jobs = explode(',',$jobs->required_skills);
+            // dd($job);
+            $jobs = explode(',',$job->required_skills);
 
                 $skillsKey = '';
                 $skills = str_replace(']','',str_replace('[','',$job->required_skills));
                 $skills = explode(',',$skills);
                 foreach($skills as $skill)
                 {
+                    // dd($skill);
                 $skill = str_replace("\"",'',$skill);
                     // $id=(int)$skill;
+                    // dd($skill);
                     $value = DB::table('skills')->where('id',(int)$skill)->get()[0];
-                    // dd($value);
-                    $skillsKey .= $value->name.",";
+                        $skillsKey .= $value->name.",";
                 }
                 $skillsKey = rtrim($skillsKey,",");
                 // dd($job);
                 $job->required_skills = $skillsKey;
-
             return $job;
+            // dd($job);
     }
     public  static function getPoster($id)
     {
@@ -81,15 +83,21 @@ class Job extends Model
     {
         $skills  =explode(',',(Auth::user()->skills));
 
-        $allJobs =  DB::table('jobs')->get();
+        $allJobs =  DB::table('jobs')->get()->all();
         // dd($allJobs);
+        // $companies = $allJobs->filter(function($item) {
+        //     return $item->
+        // });
         $jobIds = [];
         foreach ($allJobs as $job)
         {
             array_push($jobIds, $job->id);
-            $company = Company::select('*')->where('id', $job->company_id)->get()->toArray()[0];
-                // dd($company['name']);
-            $job->company = $company['name'];
+            // dd($allJobs);
+            $company = Company::get('*')->where('id', $job->company_id)->first();
+            // dd($company);
+            if(($company)) {
+                $job->company = $company['name'];
+            }
         }
         // dd($allJobs);
         return $allJobs;

@@ -1,7 +1,7 @@
 {{-- <label for="country" class="register-inputs col-md-4 col-form-label text-md-right">Country : </label>
-                                    <div class="col-md-8">
+                                    <div class="col-md-8">--}}
 
-            <select required="required" id="country" name="country" class="form-control"> --}}
+            {{-- <select required="required" id="country" name="country" class="form-control"> --}}
                 <option value="" disabled selected hidden>Please Select Your Country</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
@@ -247,7 +247,7 @@
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-            </select>
+            {{-- </select> --}}
             @error('country')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
